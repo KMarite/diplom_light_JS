@@ -52,8 +52,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     content.style.display = 'block';
                 }
            
-                panel.forEach((elem) => {
-                    let contentOtherPanel = elem.nextElementSibling;
+                panel.forEach((item) => {
+                    let contentOtherPanel = item.nextElementSibling;
                     if(!(contentOtherPanel.classList.toggle('in'))) {
                         contentOtherPanel.style.display = 'none';
                     }

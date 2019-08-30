@@ -17,6 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
             });
             popupClose.addEventListener('click', () => {              
                 popupCall.style.display = 'none';
+                event.preventDefault();
             
             });
             popupCall.addEventListener('click', (event) => {

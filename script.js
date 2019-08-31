@@ -55,6 +55,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
     accordionTwo();
 
+      // аккордеон калькулятор
+
+      const accordionCalc = () => {
+   
+        document.addEventListener('click', (event) => {
+            const panelHeading = event.target.closest('.panel-heading');
+            if (panelHeading) {
+                event.preventDefault();
+                const collapse = panelHeading.nextElementSibling;
+                panelHeading.closest('.panel-group').querySelectorAll('.panel-default').forEach(now => {
+                    now.classList.toggle('in', now === collapse && !now.classList.contains('in'));
+                });
+            }
+        });
+    
+    };
+
+    accordionCalc();
+
 
 
 

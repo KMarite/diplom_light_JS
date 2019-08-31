@@ -38,45 +38,22 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // аккордеон 2
 
-    const accordion = () => {
-        const accordionTwo = document.getElementById('accordion-two'),
-            panel = accordionTwo.querySelectorAll('.panel-heading');
-
-        panel.forEach((item) => {
-            item.addEventListener('click', () => {
-                item.classList.contains('in');
-                let content = item.nextElementSibling;
-                if (content.classList.toggle('in')) {
-                    content.style.display = 'none';
-                } else {
-                    content.style.display = 'block';
-                }
-           
-                panel.forEach((item) => {
-                    let contentOtherPanel = item.nextElementSibling;
-                    if(!(contentOtherPanel.classList.toggle('in'))) {
-                        contentOtherPanel.style.display = 'none';
-                    }
-            
-                });           
-
-            });
-
+    const accordionTwo = () => {
+   
+        document.addEventListener('click', (event) => {
+            const panelHeading = event.target.closest('.panel-heading');
+            if (panelHeading) {
+                event.preventDefault();
+                const collapse = panelHeading.nextElementSibling;
+                panelHeading.closest('.panel-group').querySelectorAll('.panel-collapse').forEach(now => {
+                    now.classList.toggle('in', now === collapse && !now.classList.contains('in'));
+                });
+            }
         });
-
-
-
-
-
-
-
-
-
-
-
-
+    
     };
-    accordion();
+
+    accordionTwo();
 
 
 

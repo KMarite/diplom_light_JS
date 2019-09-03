@@ -109,23 +109,29 @@ window.addEventListener('DOMContentLoaded', () => {
     discount();
 
 
-    // аккордеон 2
+    // аккордеон 
 
-    const accordionTwo = () => {
+    const accordion = () => {
 
         document.addEventListener('click', (event) => {
-            const panelHeading = event.target.closest('.panel-heading');
-            if (panelHeading) {
+            const target = event.target,
+                heading = target.closest('.panel-heading'),
+                nextStep = target.closest('.construct-btn');
+    
+            const collapse = heading ? heading.nextElementSibling : 
+                nextStep ? target.closest('.panel').nextElementSibling.querySelector('.panel-collapse') : null;
+    
+            if (collapse) {
                 event.preventDefault();
-                const collapse = panelHeading.nextElementSibling;
-                panelHeading.closest('.panel-group').querySelectorAll('.panel-collapse').forEach(now => {
-                    now.classList.toggle('in', now === collapse && !now.classList.contains('in'));
+                target.closest('.panel-group').querySelectorAll('.panel-collapse').forEach(n => {
+                    n.classList.toggle('in', n === collapse && !n.classList.contains('in'));
                 });
-            }          
+            }
         });
+        
     };
 
-    accordionTwo();
+    accordion();
 
     // кнопка больше
 
@@ -144,7 +150,8 @@ window.addEventListener('DOMContentLoaded', () => {
     buttonMore();
 
 
-
+ 
+  
 
 
 

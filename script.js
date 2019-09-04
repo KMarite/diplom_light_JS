@@ -149,25 +149,43 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     buttonMore();
 
+ // модальнoe окнo consultation
 
- 
+ const consultation = () => {
+
+    const directorBtn = document.querySelectorAll('.director-btn'),
+        popupConsultation = document.querySelector('.popup-consultation'),
+        popupClose = popupConsultation.querySelector('.popup-close'),
+        popupContent = popupConsultation.querySelector('.popup-content');
+
+        directorBtn.forEach((elem) => {
+        elem.addEventListener('click', () => {
+            popupConsultation.style.display = 'block';
+        });
+    });
+
+    popupClose.addEventListener('click', () => {
+        popupConsultation.style.display = 'none';
+        event.preventDefault();
+
+    });
+    popupConsultation.addEventListener('click', (event) => {
+        let target = event.target;
+        if (target.classList.contains('popup-close')) {
+            popupConsultation.style.display = 'none';
+            popupContent.removeAttribute('style');
+        } else {
+            target = target.closest('.popup-content');
+            if (!target) {
+                popupConsultation.style.display = 'none';
+            }
+        }
+    });
+
+ };
+ consultation();
+
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
